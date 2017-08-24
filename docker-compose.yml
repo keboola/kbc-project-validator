@@ -1,0 +1,13 @@
+version: "2"
+services:
+  app:
+    build: .
+    image: keboola/kbc-project-validator
+    volumes:
+      - .:/code
+    working_dir: /code
+    tty: true
+    stdin_open: true
+    command: "./phpunit.sh"
+    environment:
+      CODECLIMATE_REPO_TOKEN: $CODECLIMATE_REPO_TOKEN
