@@ -15,7 +15,8 @@
     "pimple/pimple": "^3.0",
     "monolog/monolog": "^1.17",
     "symfony/config": "^3.0",
-    "symfony/process": "^3.0"
+    "symfony/process": "^3.0",
+    "keboola/storage-api-client": "^7.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.3",
@@ -24,7 +25,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Keboola\\": "src/Keboola/"
+      "Keboola\\": ["src/Keboola", "tests/Keboola"],
+      "Keboola\\ProjectValidator\\Tests\\": "tests/"
     }
   }
 }

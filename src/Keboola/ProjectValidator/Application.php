@@ -9,7 +9,10 @@
 namespace Keboola\ProjectValidator;
 
 use GuzzleHttp\Exception\RequestException;
+use Keboola\ProjectValidator\Exception\ApplicationException;
+use Keboola\ProjectValidator\Exception\UserException;
 use Keboola\ProjectValidator\Rules\HasMysqlBackend;
+use Keboola\StorageApi\Client;
 use Monolog\Handler\NullHandler;
 use Pimple\Container;
 
@@ -27,9 +30,12 @@ class Application
             }
             return $logger;
         };
-        $container['validator'] = function () {
-            return new Validator();
-        }
+
+        $container['storage_api_client'] = function () {
+            return new Client([
+                'token' => getenv('KBC_TOKEN')
+            ]);
+        };
 
         $this->container = $container;
     }
@@ -55,14 +61,8 @@ class Application
 
     protected function runAction()
     {
-        /** @var Validator $validator */
-        $validator = $this->container['writer'];
-        $validator->validate([
-            'hasMysqlBackend' => new HasMysqlBackend()
-        ]);
-
         return [
-            'status' => 'ok'
+            'hasMysqlBackend' => (new HasMysqlBackend($this->container['storage_api_client']))()
         ];
     }
 }

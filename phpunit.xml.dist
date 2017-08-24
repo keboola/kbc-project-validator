@@ -8,7 +8,7 @@
          processIsolation="false"
          stopOnFailure="true"
          syntaxCheck="false"
-         bootstrap="bootstrap.php">
+         bootstrap="src/bootstrap.php">
 
     <testsuite name="Keboola Connection Project Validator">
         <directory>tests</directory>
