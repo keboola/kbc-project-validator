@@ -1,4 +1,4 @@
-FROM php:7
+FROM php:7.1
 MAINTAINER Miroslav Cillik <miro@keboola.com>
 
 # Dependencies

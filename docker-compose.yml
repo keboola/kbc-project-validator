@@ -11,3 +11,4 @@ services:
     command: "./phpunit.sh"
     environment:
       CODECLIMATE_REPO_TOKEN: $CODECLIMATE_REPO_TOKEN
+      KBC_TOKEN: $KBC_TOKEN
