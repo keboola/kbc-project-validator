@@ -13,7 +13,7 @@ class HasMysqlBackendTest extends \PHPUnit_Framework_TestCase
 {
     public function testInvoke()
     {
-        $this->assertFalse(
+        $this->assertTrue(
             (new HasMysqlBackend(
                 new Client(['token' => getenv('KBC_TOKEN')])
             )) ()
