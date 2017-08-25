@@ -37,6 +37,10 @@ class Application
             ]);
         };
 
+        $container['output'] = function () use ($config) {
+            return new Output($config['parameters']['data_dir']);
+        };
+
         $this->container = $container;
     }
 
@@ -61,8 +65,10 @@ class Application
 
     protected function runAction()
     {
-        return [
+        $this->container['output']->write([
             'hasMysqlBackend' => (new HasMysqlBackend($this->container['storage_api_client']))()
-        ];
+        ]);
+
+        return "Project validation finished";
     }
 }

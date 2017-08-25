@@ -1,5 +1,8 @@
 <?php
 
+use Keboola\ProjectValidator\Application;
+use Keboola\ProjectValidator\Exception\ApplicationException;
+use Keboola\ProjectValidator\Exception\UserException;
 use Monolog\Logger;
 
 require_once(__DIR__ . "/bootstrap.php");
