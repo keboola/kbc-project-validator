@@ -6,7 +6,6 @@
 
 namespace Keboola\ProjectValidator\Rules;
 
-
 class HasSysStage
 {
     private $buckets;
