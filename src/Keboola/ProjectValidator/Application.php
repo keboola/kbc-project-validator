@@ -12,6 +12,7 @@ use GuzzleHttp\Exception\RequestException;
 use Keboola\ProjectValidator\Exception\ApplicationException;
 use Keboola\ProjectValidator\Exception\UserException;
 use Keboola\ProjectValidator\Rules\HasMysqlBackend;
+use Keboola\ProjectValidator\Validator;
 use Keboola\StorageApi\Client;
 use Monolog\Handler\NullHandler;
 use Pimple\Container;
@@ -65,9 +66,10 @@ class Application
 
     protected function runAction()
     {
-        $this->container['output']->write([
-            'hasMysqlBackend' => (new HasMysqlBackend($this->container['storage_api_client']))()
-        ]);
+        /** @var Validator $validator */
+        $validator = $this->container['validator'];
+
+        $this->container['output']->write($validator->validate());
 
         return "Project validation finished";
     }

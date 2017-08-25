@@ -7,23 +7,20 @@
 
 namespace Keboola\ProjectValidator\Rules;
 
-use Keboola\StorageApi\Client;
-
 class HasMysqlBackend
 {
-    private $storageApiClient;
+    private $buckets;
 
-    public function __construct(Client $storageApiClient)
+    public function __construct($buckets)
     {
-        $this->storageApiClient = $storageApiClient;
+        $this->buckets = $buckets;
     }
 
     // return true if project buckets run on MySQL backend, false otherwise
     public function __invoke()
     {
         // iterate through project buckets and check their backend
-        $buckets = $this->storageApiClient->listBuckets();
-        foreach ($buckets as $bucket) {
+        foreach ($this->buckets as $bucket) {
             if (strtolower($bucket['backend']) === 'mysql') {
                 return true;
             }
