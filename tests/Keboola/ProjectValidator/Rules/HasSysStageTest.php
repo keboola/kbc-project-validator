@@ -13,7 +13,7 @@ class HasSysStageTest extends \PHPUnit_Framework_TestCase
     public function testInvoke()
     {
         $this->assertTrue(
-            (new HasMysqlBackend(
+            (new HasSysStage(
                 (new Client(['token' => getenv('KBC_TOKEN')]))->listBuckets()
             )) ()
         );
