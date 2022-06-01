@@ -11,3 +11,11 @@ App is developed on localhost using TDD.
 
 1. `git clone git@github.com:keboola/kbc-project-validator.git`    
 2. `docker-compose run --rm app`
+
+## License
+
+MIT licensed, see [LICENSE](./LICENSE) file.
+
+## License
+
+MIT licensed, see [LICENSE](./LICENSE) file.
